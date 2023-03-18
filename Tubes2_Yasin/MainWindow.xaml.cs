@@ -22,12 +22,12 @@ namespace Tubes2_Yasin
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string name;
+        public string map;
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new Person { Name = this.name, Age = 20, PhoneNumber = "123456" };
+            DataContext = new Person { Name = "eruivfhieruhfu", Age = 20, PhoneNumber = "123456" };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -53,11 +53,68 @@ namespace Tubes2_Yasin
 
                 // Do something with the file contents
                 // For example, display the contents in a TextBox
-                this.name = fileContents;
-                Console.WriteLine(fileName);
-                Console.WriteLine(fileContents);
-                DataContext = new Person { Name = this.name, Age = 20, PhoneNumber = "123456" };
+                TextBlock text = new TextBlock();
+                text.Text = fileContents;
+                Grid mygrid = (Grid)FindName("myMap");
+                mygrid.Children.Add(text);
             }
+        }
+
+        private void btnCreateMatrix_Click(object sender, RoutedEventArgs e)
+        {
+            int rows = int.Parse("2");
+            int cols = int.Parse("4");
+
+            Grid grid = new Grid();
+
+            for (int i = 0; i < rows; i++)
+            {
+                RowDefinition rowDef = new RowDefinition();
+                grid.RowDefinitions.Add(rowDef);
+
+                for (int j = 0; j < cols; j++)
+                {
+                    ColumnDefinition colDef = new ColumnDefinition();
+                    grid.ColumnDefinitions.Add(colDef);
+
+                    TextBlock textBlock = new TextBlock();
+                    textBlock.Text = string.Format("({0}, {1})", i, j);
+                    textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+                    textBlock.VerticalAlignment = VerticalAlignment.Center;
+
+                    Grid.SetRow(textBlock, i);
+                    Grid.SetColumn(textBlock, j);
+
+                    grid.Children.Add(textBlock);
+                }
+            }
+
+            this.Content = grid;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
