@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Tubes2_Yasin
 {
@@ -51,19 +52,15 @@ namespace Tubes2_Yasin
                 // Read the contents of the file
                 string fileContents = File.ReadAllText(fileName);
 
-                // Do something with the file contents
-                // For example, display the contents in a TextBox
-                TextBlock text = new TextBlock();
-                text.Text = fileContents;
-                Grid mygrid = (Grid)FindName("myMap");
-                mygrid.Children.Add(text);
+                string[] str = fileContents.Split('\n');
+                createMatrix(str);
             }
         }
 
-        private void btnCreateMatrix_Click(object sender, RoutedEventArgs e)
+        private void createMatrix(string[] str)
         {
-            int rows = int.Parse("2");
-            int cols = int.Parse("4");
+            int rows = str.Length;
+            int cols = str.Length;
 
             Grid grid = new Grid();
 
@@ -77,10 +74,12 @@ namespace Tubes2_Yasin
                     ColumnDefinition colDef = new ColumnDefinition();
                     grid.ColumnDefinitions.Add(colDef);
 
+
                     TextBlock textBlock = new TextBlock();
-                    textBlock.Text = string.Format("({0}, {1})", i, j);
-                    textBlock.HorizontalAlignment = HorizontalAlignment.Center;
-                    textBlock.VerticalAlignment = VerticalAlignment.Center;
+                    if (str[i][j] == '1')
+                    {
+                        textBlock.Background = Brushes.Black;
+                    }
 
                     Grid.SetRow(textBlock, i);
                     Grid.SetColumn(textBlock, j);
@@ -89,7 +88,8 @@ namespace Tubes2_Yasin
                 }
             }
 
-            this.Content = grid;
+            Grid mygrid = (Grid)FindName("myMap");
+            mygrid.Children.Add(grid);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

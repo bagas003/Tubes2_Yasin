@@ -43,8 +43,8 @@
         <RadioButton Content="DFS" HorizontalAlignment="Left" Margin="50,217,0,0" VerticalAlignment="Top"/>
         <RadioButton Content="Biasa" HorizontalAlignment="Left" Margin="50,264,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.671" Checked="RadioButton_Checked_1"/>
         <RadioButton Content="TSP" HorizontalAlignment="Left" Margin="50,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.671" Checked="RadioButton_Checked_1"/>
-        <Button Margin="122,323,545,75" Click="Button_Click_2">
-            <Button Content="Visualize" Click="Button_Click_1" Width="68"/>
+        <Button Margin="122,323,545,75">
+            <Button Content="Visualize" Width="68"/>
         </Button>
         <Grid Margin="449,117,50,117" Grid.RowSpan="2" Name="myMap"/>
     </Grid>
