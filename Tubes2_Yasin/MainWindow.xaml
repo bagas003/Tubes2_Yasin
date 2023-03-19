@@ -34,8 +34,8 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <TextBlock HorizontalAlignment="Left" Height="22" Margin="50,88,0,0" TextWrapping="Wrap" Text="Input" VerticalAlignment="Top" Width="56" FontWeight="Bold" FontSize="17" RenderTransformOrigin="0.161,1.306"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="422,88,0,0" TextWrapping="Wrap" Text="Output" VerticalAlignment="Top" Width="63" FontWeight="Bold" FontSize="17" RenderTransformOrigin="3.518,1.132"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="50,88,0,0" TextWrapping="Wrap" Text="input" VerticalAlignment="Top" Width="56" FontWeight="Bold" FontSize="17" RenderTransformOrigin="0.161,1.306"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="422,88,0,0" TextWrapping="Wrap" Text="output" VerticalAlignment="Top" Width="63" FontWeight="Bold" FontSize="17" RenderTransformOrigin="3.518,1.132"/>
         <Button Click="Button_Click" Width="100" Height="30" Content="Select File" Margin="50,122,650,282"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,173,0,0" TextWrapping="Wrap" Text="Algoritma" VerticalAlignment="Top" FontSize="13"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,242,0,0" TextWrapping="Wrap" Text="Algoritma" VerticalAlignment="Top" FontSize="13"/>

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Tubes2_Yasin
 {
-    public class Person
+    public class Output
     {
-        public string Name { get; set; } = "ewihf";
-        public int Age { get; set; }
+        public int row { get; set; }
+        public int column { get; set; }
+        public char isi { get; set; }
 
-        public string PhoneNumber { get; set; }
     }
 }

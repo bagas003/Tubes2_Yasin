@@ -28,7 +28,6 @@ namespace Tubes2_Yasin
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new Person { Name = "eruivfhieruhfu", Age = 20, PhoneNumber = "123456" };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,17 +51,28 @@ namespace Tubes2_Yasin
                 // Read the contents of the file
                 string fileContents = File.ReadAllText(fileName);
 
-                string[] str = fileContents.Split('\n');
-                createMatrix(str);
+                int i = 0;
+                string[] lines = fileContents.Split('\n');
+                int length = lines.Length;
+                char[,] matrix = new char[length, length];
+                for(i=0; i < length; i++)
+                {
+                    for(int j=0;j<length; j++)
+                    {
+                        matrix[i,j] = lines[i][j];
+                    }
+                }
+                createMatrix(matrix);
             }
         }
 
-        private void createMatrix(string[] str)
+        private void createMatrix(char[,] matrix)
         {
-            int rows = str.Length;
-            int cols = str.Length;
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(0);
 
             Grid grid = new Grid();
+
 
             for (int i = 0; i < rows; i++)
             {
@@ -74,19 +84,48 @@ namespace Tubes2_Yasin
                     ColumnDefinition colDef = new ColumnDefinition();
                     grid.ColumnDefinitions.Add(colDef);
 
+                    DataContext = new Output { column = rows, row = cols, isi = matrix[0,0] };
 
                     TextBlock textBlock = new TextBlock();
-                    if (str[i][j] == '1')
+                    if (matrix[i, j] == 'K')
+                    {
+                        textBlock.Text = "S";
+                    }
+                    else if (matrix[i, j] == 'T')
+                    {
+                        textBlock.Text = "T";
+                    }
+                    else if (matrix[i, j] == 'X')
                     {
                         textBlock.Background = Brushes.Black;
                     }
+                    else
+                    {
+                        textBlock.Background = Brushes.White;
+                    }
+                    Border myBorder = new Border();
+                    myBorder.BorderThickness = new Thickness(2);
+                    myBorder.BorderBrush = Brushes.Black;
+                    myBorder.Child = textBlock;
 
-                    Grid.SetRow(textBlock, i);
-                    Grid.SetColumn(textBlock, j);
+                    textBlock.Width = 600/cols;
+                    textBlock.Height = 600/rows;
 
-                    grid.Children.Add(textBlock);
+                    grid.Children.Add(myBorder);
+
+                    Grid.SetRow(myBorder, i);
+                    Grid.SetColumn(myBorder, j);
+
+                    myBorder.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    myBorder.VerticalAlignment = VerticalAlignment.Stretch;
+
+                    myBorder.Width = 600/cols;
+                    myBorder.Width = 600/rows;
+
                 }
             }
+            grid.ActualWidth = 600;
+            grid.ActualHeight = 600;
 
             Grid mygrid = (Grid)FindName("myMap");
             mygrid.Children.Add(grid);
