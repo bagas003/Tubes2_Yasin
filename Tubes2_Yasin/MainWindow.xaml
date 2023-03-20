@@ -18,34 +18,34 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Puzzle Solver" Width="400" Height="60"/>
-        <Grid Grid.Row="1" Grid.Column="0">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Treasure Hunt Solver" Width="400" HorizontalAlignment="Left" FontWeight="Bold" FontFamily="Bookman Old Style" FontSize="25" Margin="242,10,0,364" Grid.RowSpan="2" />
+        <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Height="346">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="29*"/>
+                <RowDefinition Height="51*"/>
+                <RowDefinition Height="79*"/>
+                <RowDefinition Height="79*"/>
+                <RowDefinition Height="57*"/>
+                <RowDefinition Height="51.097"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Input" Width="150" Height="50"/>
-            <Button Grid.Row="1" Content="Choose File" Width="100" Height="30" Click="Button_Click"/>
-            <StackPanel Grid.Row="2" Width="200">
-                <TextBlock Text="Pilih Algoritma"/>
-                <RadioButton Content="BFS" x:Name="radio_BFS"/>
-                <RadioButton Content="DFS" x:Name="radio_DFS"/>
+            <TextBlock Text="Input" Width="145" Height="25" HorizontalAlignment="Left" Margin="60,0,0,0" FontFamily="Arial" FontWeight="Bold" FontSize="13" VerticalAlignment="Center"/>
+            <Button Grid.Row="1" Content="Choose File" Click="Button_Click" Margin="100,0,100,0" Background="#FFA37DF9" Height="30"/>
+            <StackPanel Grid.Row="2" Margin="60,10,100,0" Grid.RowSpan="2" Height="70" VerticalAlignment="Top">
+                <TextBlock Text="Pilih Algoritma" Height="20"/>
+                <RadioButton Content="BFS" Height="20"/>
+                <RadioButton Content="DFS" Height="20"/>
             </StackPanel>
-            <StackPanel Grid.Row="3" Width="200">
-                <TextBlock Text="Pilih Algoritma"/>
-                <RadioButton Content="Biasa" x:Name="radio_biasa"/>
-                <RadioButton Content="TSP" x:Name="radio_TSP"/>
+            <StackPanel Grid.Row="3" Margin="60,0,100,0" VerticalAlignment="Top" Height="70">
+                <TextBlock Text="Pilih Algoritma" Height="20"/>
+                <RadioButton Content="Biasa" Height="20"/>
+                <RadioButton Content="TSP" Height="20"/>
             </StackPanel>
-            <Button Grid.Row="4" Content="Search" Width="100" Height="30"/>
-            <Button Grid.Row="5" Content="Visualize" Width="100" Height="30"/>
+            <Button Grid.Row="4" Content="Search!" Margin="100,0,100,0" Background="#FFA37DF9" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="30" VerticalAlignment="Top"/>
+            <Button Grid.Row="5" Content="Visualize" Margin="100,0,100,0" VerticalAlignment="Top" Height="30" Width="120" Background="#FFA37DF9"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -53,10 +53,16 @@
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Output"/>
-            <Grid Grid.Row="1" x:Name="myMap"/>
+            <TextBlock Grid.Row="0" Text="Output" FontWeight="Bold" FontFamily="Arial" FontSize="13" Height="25" VerticalAlignment="Top"/>
+            <Grid x:Name="myMap" Margin="0,25,0,0" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="11*"/>
+                    <ColumnDefinition Width="49*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -64,10 +70,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Route: "/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="Steps: "/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Route: "/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Steps: "/>
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Nodes: "/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="Excecution time: "/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Excecution time: "/>
             </Grid>
 
         </Grid>
