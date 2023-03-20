@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin1\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
       "projectName": "Tubes2_Yasin",
-      "projectPath": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin1\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
+      "projectPath": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin1\\Tubes2_Yasin\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

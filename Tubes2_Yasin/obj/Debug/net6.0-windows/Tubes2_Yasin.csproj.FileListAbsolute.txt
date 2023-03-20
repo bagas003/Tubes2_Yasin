@@ -7,7 +7,6 @@ C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin_MarkupCompile.cache
-C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin_MarkupCompile.lref
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin.g.resources
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin.GeneratedMSBuildEditorConfig.editorconfig

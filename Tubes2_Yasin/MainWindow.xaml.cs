@@ -119,13 +119,13 @@ namespace Tubes2_Yasin
                     myBorder.HorizontalAlignment = HorizontalAlignment.Stretch;
                     myBorder.VerticalAlignment = VerticalAlignment.Stretch;
 
-                    myBorder.Width = 600/cols;
-                    myBorder.Width = 600/rows;
+                    myBorder.Width = 400/cols;
+                    myBorder.Height = 400/rows;
 
                 }
             }
-            grid.ActualWidth = 600;
-            grid.ActualHeight = 600;
+            grid.Width = 400;
+            grid.Height = 400;
 
             Grid mygrid = (Grid)FindName("myMap");
             mygrid.Children.Add(grid);

@@ -13,39 +13,64 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Height="39" Margin="0,7,0,0" TextWrapping="Wrap" Text="Treasure Hunt Solver" VerticalAlignment="Top" Width="288" FontSize="30"/>
-        <Rectangle Stroke="Black" Margin="50,47,50,382" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <Rectangle Stroke="Black" Margin="234,231,245,202" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-90.022"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <TextBlock HorizontalAlignment="Left" Height="22" Margin="50,88,0,0" TextWrapping="Wrap" Text="input" VerticalAlignment="Top" Width="56" FontWeight="Bold" FontSize="17" RenderTransformOrigin="0.161,1.306"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="422,88,0,0" TextWrapping="Wrap" Text="output" VerticalAlignment="Top" Width="63" FontWeight="Bold" FontSize="17" RenderTransformOrigin="3.518,1.132"/>
-        <Button Click="Button_Click" Width="100" Height="30" Content="Select File" Margin="50,122,650,282"/>
-        <TextBlock HorizontalAlignment="Left" Margin="50,173,0,0" TextWrapping="Wrap" Text="Algoritma" VerticalAlignment="Top" FontSize="13"/>
-        <TextBlock HorizontalAlignment="Left" Margin="50,242,0,0" TextWrapping="Wrap" Text="Algoritma" VerticalAlignment="Top" FontSize="13"/>
-        <RadioButton Content="BFS" HorizontalAlignment="Left" Margin="50,195,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.671"/>
-        <RadioButton Content="DFS" HorizontalAlignment="Left" Margin="50,217,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Biasa" HorizontalAlignment="Left" Margin="50,264,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.671" Checked="RadioButton_Checked_1"/>
-        <RadioButton Content="TSP" HorizontalAlignment="Left" Margin="50,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.671" Checked="RadioButton_Checked_1"/>
-        <Button Margin="122,323,545,75">
-            <Button Content="Visualize" Width="68"/>
-        </Button>
-        <Grid Margin="449,117,50,117" Grid.RowSpan="2" Name="myMap"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Puzzle Solver" Width="400" Height="60"/>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Input" Width="150" Height="50"/>
+            <Button Grid.Row="1" Content="Choose File" Width="100" Height="30" Click="Button_Click"/>
+            <StackPanel Grid.Row="2" Width="200">
+                <TextBlock Text="Pilih Algoritma"/>
+                <RadioButton Content="BFS"/>
+                <RadioButton Content="DFS"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Width="200">
+                <TextBlock Text="Pilih Algoritma"/>
+                <RadioButton Content="Biasa"/>
+                <RadioButton Content="TSP"/>
+            </StackPanel>
+            <Button Grid.Row="4" Content="Search" Width="100" Height="30"/>
+            <Button Grid.Row="5" Content="Visualize" Width="100" Height="30"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Output"/>
+            <Grid Grid.Row="1" x:Name="myMap"/>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Route: "/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Steps: "/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Nodes: "/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Excecution time: "/>
+            </Grid>
+
+        </Grid>
     </Grid>
+
 </Window>
