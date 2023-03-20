@@ -36,13 +36,13 @@
             <Button Grid.Row="1" Content="Choose File" Width="100" Height="30" Click="Button_Click"/>
             <StackPanel Grid.Row="2" Width="200">
                 <TextBlock Text="Pilih Algoritma"/>
-                <RadioButton Content="BFS"/>
-                <RadioButton Content="DFS"/>
+                <RadioButton Content="BFS" x:Name="radio_BFS"/>
+                <RadioButton Content="DFS" x:Name="radio_DFS"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Width="200">
                 <TextBlock Text="Pilih Algoritma"/>
-                <RadioButton Content="Biasa"/>
-                <RadioButton Content="TSP"/>
+                <RadioButton Content="Biasa" x:Name="radio_biasa"/>
+                <RadioButton Content="TSP" x:Name="radio_TSP"/>
             </StackPanel>
             <Button Grid.Row="4" Content="Search" Width="100" Height="30"/>
             <Button Grid.Row="5" Content="Visualize" Width="100" Height="30"/>
