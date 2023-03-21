@@ -54,12 +54,7 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Output" FontWeight="Bold" FontFamily="Arial" FontSize="13" Height="25" VerticalAlignment="Top"/>
-            <Grid x:Name="myMap" Margin="0,25,0,0" Grid.RowSpan="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="11*"/>
-                    <ColumnDefinition Width="49*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>
+            <Grid x:Name="myMap" Grid.Row="1" />
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>

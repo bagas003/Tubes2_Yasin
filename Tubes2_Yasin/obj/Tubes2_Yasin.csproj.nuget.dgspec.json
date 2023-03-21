@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj": {}
+    "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj": {
+    "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
         "projectName": "Tubes2_Yasin",
-        "projectPath": "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
-        "packagesPath": "C:\\Users\\mmuuh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Documents\\Koding\\Tubes2_Yasin\\Tubes2_Yasin\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mmuuh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
