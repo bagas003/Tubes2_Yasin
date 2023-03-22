@@ -5,13 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Try.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -36,15 +29,14 @@
             <Button Grid.Row="1" Content="Choose File" Click="Button_Click" Margin="100,0,100,0" Background="#FFA37DF9" Height="30"/>
             <StackPanel Grid.Row="2" Margin="60,10,100,0" Grid.RowSpan="2" Height="70" VerticalAlignment="Top">
                 <TextBlock Text="Pilih Algoritma" Height="20"/>
-                <RadioButton Content="BFS" Height="20"/>
-                <RadioButton Content="DFS" Height="20"/>
+                <RadioButton Content="BFS" Height="20" x:Name="radio_BFS"/>
+                <RadioButton Content="DFS" Height="20" x:Name="radio_DFS"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="60,0,100,0" VerticalAlignment="Top" Height="70">
                 <TextBlock Text="Pilih Algoritma" Height="20"/>
-                <RadioButton Content="Biasa" Height="20"/>
-                <RadioButton Content="TSP" Height="20"/>
+                <ToggleButton Content="TSP" IsChecked="false" x:Name="toggle_TSP"/>
             </StackPanel>
-            <Button Grid.Row="4" Content="Search!" Margin="100,0,100,0" Background="#FFA37DF9" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="30" VerticalAlignment="Top"/>
+            <Button Grid.Row="4" Content="Search!" Margin="100,0,100,0" Background="#FFA37DF9" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="30" VerticalAlignment="Top" Click="Button_Click_1"/>
             <Button Grid.Row="5" Content="Visualize" Margin="100,0,100,0" VerticalAlignment="Top" Height="30" Width="120" Background="#FFA37DF9"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
@@ -66,6 +58,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Route: "/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding route}"/>
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="Steps: "/>
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Nodes: "/>
                 <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Excecution time: "/>

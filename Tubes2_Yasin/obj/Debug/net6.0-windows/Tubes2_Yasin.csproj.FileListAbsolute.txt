@@ -18,7 +18,6 @@ C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin.pdb
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin.genruntimeconfig.cache
 C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\ref\Tubes2_Yasin.dll
-C:\Users\HP\Documents\Koding\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Try.baml
 C:\Users\HP\Documents\Koding\Tubes2_Yasin1\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin.csproj.AssemblyReference.cache
 C:\Users\HP\Documents\Koding\Tubes2_Yasin1\Tubes2_Yasin\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\HP\Documents\Koding\Tubes2_Yasin1\Tubes2_Yasin\obj\Debug\net6.0-windows\Try.baml
