@@ -46,7 +46,6 @@ C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\bin\Debug\net6.0-windows\Tube
 C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\bin\Debug\net6.0-windows\Tubes2_Yasin.pdb
 C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin.csproj.AssemblyReference.cache
 C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Try.baml
 C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\mmuuh\Documents\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\Tubes2_Yasin_MarkupCompile.cache
