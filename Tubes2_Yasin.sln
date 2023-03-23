@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tubes2_Yasin", "Tubes2_Yasin\Tubes2_Yasin.csproj", "{A59D0A8A-727D-4483-8DC7-63C8B63A3809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tubes2_Yasin", "Tubes2_Yasin\Tubes2_Yasin.csproj", "{A59D0A8A-727D-4483-8DC7-63C8B63A3809}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6A1BA65-3D52-4557-AE1F-A82B8B22F306}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\fonts\Poppins-Regular.ttf = ..\..\fonts\Poppins-Regular.ttf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -18,6 +18,9 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Security.RightsManagement;
 using System.Windows.Controls.Primitives;
 using System.Threading;
+using System.Net.NetworkInformation;
+using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace Tubes2_Yasin
 {
@@ -27,6 +30,8 @@ namespace Tubes2_Yasin
         public int nodes;
         public int steps;
         public int time;
+        private DispatcherTimer _timer;
+        private int _currentIndex;
         public State state = new State();
 
         public MainWindow()
@@ -61,11 +66,13 @@ namespace Tubes2_Yasin
 
                 int i = 0;
                 string[] lines = fileContents.Split('\n');
-                int length = lines.Length;
-                char[,] matrix = new char[length, length];
-                for(i=0; i < length; i++)
+                int rows = lines.Length;
+                int cols = lines[0].Length-1;
+                char[,] matrix = new char[rows, cols];
+
+                for (i=0; i < rows; i++)
                 {
-                    for(int j=0;j<length; j++)
+                    for(int j=0;j<cols; j++)
                     {
                         matrix[i,j] = lines[i][j];
                         if (matrix[i,j] != 'T' && matrix[i, j] != 'R' && matrix[i, j] != 'K' && matrix[i, j] != 'X')
@@ -92,7 +99,7 @@ namespace Tubes2_Yasin
                 if (isValid && isKOne)
                 {
                     state.map = matrix;
-                    state.visited = new bool[length, length];
+                    state.visited = new bool[rows, cols];
                     createMatrix();
                 }
                 else
@@ -123,23 +130,24 @@ namespace Tubes2_Yasin
             Grid.SetRow(textBlock, 0);
 
             Grid mygrid = (Grid)FindName("myMap");
+            mygrid.Children.Clear();
             mygrid.Children.Add(grid);
         }
 
         private void createMatrix()
         {
             int rows = state.map.GetLength(0);
-            int cols = state.map.GetLength(0);
+            int cols = state.map.Length/rows;
 
-            Grid grid = new Grid();
-
-            for(int i = 0; i < rows; i++)
+            Grid grid = new Grid(); 
+            
+            for (int i = 0; i < rows; i++)
             {
                 RowDefinition rowDef = new RowDefinition();
                 grid.RowDefinitions.Add(rowDef);
             }
 
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < cols; i++)
             {
                 ColumnDefinition colDef = new ColumnDefinition();
                 grid.ColumnDefinitions.Add(colDef);
@@ -168,12 +176,21 @@ namespace Tubes2_Yasin
                         textBlock.Background = Brushes.White;
                     }
 
-                    Tuple<int,int> tmp = new Tuple<int,int>(i, j);
+                    Tuple<int, int> tmp = new Tuple<int, int>(i, j);
 
                     if (state.path.Contains(tmp))
                     {
                         textBlock.Background = Brushes.Yellow;
                     }
+
+                    if (state.currCheck != null)
+                    {
+                        if (state.currCheck.Item1 == i && state.currCheck.Item2 == j)
+                        {
+                            textBlock.Background = Brushes.Blue;
+                        }
+                    }
+
                     Border myBorder = new Border();
                     myBorder.BorderThickness = new Thickness(2);
                     myBorder.BorderBrush = Brushes.Black;
@@ -185,11 +202,13 @@ namespace Tubes2_Yasin
                     Grid.SetColumn(myBorder, j);
                 }
             }
+
+
             grid.Width = 200;
             grid.Height = 200;
 
             Grid mygrid = (Grid)FindName("myMap");
-            mygrid.Children.Remove(mygrid);
+            mygrid.Children.Clear();
             mygrid.Children.Add(grid);
         }
 
@@ -199,6 +218,9 @@ namespace Tubes2_Yasin
             RadioButton radioBFS = (RadioButton)FindName("radio_BFS");
             RadioButton radioDFS = (RadioButton)FindName("radio_DFS");
 
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
             if (toggleTSP.IsChecked == true)
             {
                 if(radioBFS.IsChecked == true)
@@ -223,7 +245,11 @@ namespace Tubes2_Yasin
                     createMatrix();
                 }
             }
-            createMatrix();
+            stopwatch.Stop();
+
+            TextBlock textExc = (TextBlock)FindName("text_exc");
+            textExc.Text += stopwatch.Elapsed.TotalMilliseconds.ToString() + " ms";
+
         }
 
         public bool goCheck(int x, int y) 
@@ -236,15 +262,13 @@ namespace Tubes2_Yasin
             // mark as visited
             state.visited[x, y] = true;
             Tuple<int, int> temp = Tuple.Create(x, y);
+            state.traversalPath.Add(temp);
 
             // add (x,y) to path
             if (state.path.Count == 0 || !state.path.Last().Equals(temp))
             {
                 state.path.Add(temp);
             }
-
-            createMatrix();
-            Thread.Sleep(1000);
 
             // collect T if (x,y) is a treasure
             if (state.map[x, y] == 'T')
@@ -286,12 +310,14 @@ namespace Tubes2_Yasin
             state.parent = new Tuple<int, int>[state.map.GetLength(0), state.map.GetLength(1)];
             state.parent[x, y] = Tuple.Create(-1, -1);
 
+
             // loop while queue not empty
             while (queue.Count > 0) {
                 // dequeue as temp then mark as visited
                 Tuple<int, int> temp = queue.Dequeue();
                 state.visited[temp.Item1, temp.Item2] = true;
             
+                state.traversalPath.Add(temp);
                 // Treasure encountered
                 if (state.map[temp.Item1, temp.Item2] == 'T') {
                     // inc Counter, change current position, change map value to R
@@ -380,12 +406,41 @@ namespace Tubes2_Yasin
                 temp = item;
             }
             state.route = route;
-            DataContext = this.state;
+
+            TextBlock mytext = (TextBlock)FindName("text_route");
+            mytext.Text += " " + route;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             search();
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            _currentIndex = 0;
+
+            // Create the timer but don't start it yet
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Tick += visualize;
+            _timer.Start();
+        }
+
+
+        private void visualize(object sender, EventArgs e)
+        {
+            if(state.idxTraverse < state.traversalPath.Count)
+            {
+                state.currCheck = state.traversalPath[state.idxTraverse];
+                createMatrix();
+                state.idxTraverse++;
+            }
+            else
+            {
+                _timer.Stop();
+            }
         }
 
     }
