@@ -34,19 +34,24 @@
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="60,0,100,0" VerticalAlignment="Top" Height="70">
                 <TextBlock Text="Pilih Algoritma" Height="20"/>
-                <ToggleButton Content="TSP" IsChecked="false" x:Name="toggle_TSP"/>
+                <ToggleButton Content="TSP" IsChecked="false" x:Name="toggle_TSP" Margin="40,7,0,0" Height="30"/>
             </StackPanel>
-            <Button Grid.Row="4" Content="Search!" Margin="100,0,100,0" Background="#FFA37DF9" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="30" VerticalAlignment="Top" Click="Button_Click_1"/>
+            <Button Grid.Row="4" Content="Search!" Margin="100,3,100,0" Background="#FFA37DF9" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="30" VerticalAlignment="Top" Click="Button_Click_1"/>
             <Button Grid.Row="5" Content="Visualize" Margin="100,0,100,0" VerticalAlignment="Top" Height="30" Width="120" Background="#FFA37DF9"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Output" FontWeight="Bold" FontFamily="Arial" FontSize="13" Height="25" VerticalAlignment="Top"/>
-            <Grid x:Name="myMap" Grid.Row="1" />
+            <Grid x:Name="myMap" Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
