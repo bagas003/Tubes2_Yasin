@@ -261,6 +261,7 @@ namespace Tubes2_Yasin
         {
             // mark as visited
             state.visited[x, y] = true;
+            state.visitBefore[x, y] = true;
             Tuple<int, int> temp = Tuple.Create(x, y);
             state.traversalPath.Add(temp);
 
@@ -284,11 +285,25 @@ namespace Tubes2_Yasin
         
 
             // recursive
-            for (int i = 0; i < 4; i++) {
+            var possibleDir = new List<Tuple<int, int>>();
+            for (int i = 0; i < 4; i++) 
+            {
                 int x2 = x + state.dx[i];
                 int y2 = y + state.dy[i];
-                if (goCheck(x2, y2)) {
-                    if (DFS(x2, y2)) 
+                if (goCheck(x2, y2)) 
+                {
+                    state.anotherWay = state.anotherWay || !state.visitBefore[x2, y2];
+                    possibleDir.Add(Tuple.Create(x2, y2));
+                }
+            }
+
+            foreach (var dir in possibleDir)
+            {
+                int x2 = dir.Item1, y2 = dir.Item2;
+                if ((!state.anotherWay && state.visitBefore[x2, y2]) 
+                    || !state.visitBefore[x2, y2])
+                {
+                    if (DFS(x2, y2))
                     {
                         return true;
                     }
@@ -297,6 +312,7 @@ namespace Tubes2_Yasin
 
             // remove point from path
             state.path.RemoveAt(state.path.Count - 1);
+            state.visited[x, y] = false;
             return false;
         }
     
@@ -330,6 +346,7 @@ namespace Tubes2_Yasin
                     while (!temp.Equals(new Tuple<int, int>(x, y))) {
                         tempPath.Add(temp);
                         temp = state.parent[temp.Item1, temp.Item2];
+                        state.visitBefore[temp.Item1, temp.Item2] = true;
                     }
                     tempPath.Reverse();
                     state.path.AddRange(tempPath);
@@ -338,15 +355,31 @@ namespace Tubes2_Yasin
                 }
 
                 // enqueue all possible road
-                for (int i = 0; i < 4; i++) {
+                var possibleDir = new List<Tuple<int, int>>();
+                for (int i = 3; i >= 0; i--) {
                     int x2 = temp.Item1 + state.dx[i];
                     int y2 = temp.Item2 + state.dy[i];
 
                     if (goCheck(x2, y2))
                     {
-                        state.parent[x2, y2] = temp;
-                        queue.Enqueue(Tuple.Create(x2, y2));
+                        state.visited[x2, y2] = true;
+                        
+                        if (state.visitBefore[x2, y2])
+                        {
+                            possibleDir.Add(Tuple.Create(x2, y2));
+                        }
+                        else
+                        {
+                            possibleDir.Insert(0, Tuple.Create(x2, y2));
+                        }
                     }
+                }
+
+                foreach (var dir in possibleDir)
+                {   
+                    int xd = dir.Item1, yd = dir.Item2;
+                    state.parent[xd, yd] = temp;
+                    queue.Enqueue(dir);
                 }
             }
         }
@@ -354,9 +387,11 @@ namespace Tubes2_Yasin
         public void solveDFS()
         {
             state.current = state.start;
-            state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
             while (state.TFounds != state.TCounts)
             {
+                state.anotherWay = false;
+                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
                 DFS(state.current.Item1, state.current.Item2);
             }
             setRoute();
@@ -365,10 +400,12 @@ namespace Tubes2_Yasin
         public void solveBFS()
         {
             state.current = state.start;
-            state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
             state.path.Add(state.start);
+            state.visitBefore[start.Item1, start.Item2] = true;
             while (state.TFounds != state.TCounts)
             {
+                state.visited = new bool[map.GetLength(0), map.GetLength(1)];
                 BFS(state.current.Item1, state.current.Item2);
             }
             setRoute();
