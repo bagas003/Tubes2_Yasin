@@ -225,11 +225,11 @@ namespace Tubes2_Yasin
             {
                 if(radioBFS.IsChecked == true)
                 {
-                    solveBFS();
+                    tspBFS();
                     createMatrix();
                 }else if(radioDFS.IsChecked == true)
                 {
-                    solveDFS();
+                    tspDFS();
                     createMatrix();
                 }
             }else
