@@ -9,7 +9,7 @@ namespace Tubes2_Yasin
     public class Program
     {
         public Tuple<int, int> start = null, current = null;
-        public int TCounts = 0, TFounds = 0;
+        public int TCounts = 0, TFounds = 0, timespan = 100;
         public char[,] map = null;
         public bool[,] visited = null;
         public Tuple<int, int> [,] parent = null;

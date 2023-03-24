@@ -22,26 +22,35 @@
                 <RowDefinition Height="51*"/>
                 <RowDefinition Height="79*"/>
                 <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
                 <RowDefinition Height="64*"/>
                 <RowDefinition Height="68.003"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Input" Width="145" Height="25" HorizontalAlignment="Left" Margin="60,0,0,0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center"/>
-            <Border Grid.Row="1" CornerRadius="10" Padding="3" Background="LightBlue" Margin="110,10,110,11">
+            <Border Grid.Row="1" CornerRadius="10" Padding="3" Background="LightBlue" Width="100" Height="30">
                 <Button Content="Choose File" Click="Button_Click" BorderBrush="LightBlue" Foreground="White" Background="LightBlue" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
             </Border>
             <StackPanel Grid.Row="2" Margin="60,10,100,0" Grid.RowSpan="2" Height="70" VerticalAlignment="Top">
                 <TextBlock Text="Pilih Algoritma" Height="20"/>
-                <RadioButton Content="BFS" Height="20" x:Name="radio_BFS"/>
+                <RadioButton Content="BFS" Height="20" x:Name="radio_BFS" IsChecked="true"/>
                 <RadioButton Content="DFS" Height="20" x:Name="radio_DFS"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="60,0,100,0" VerticalAlignment="Center" Height="52">
                 <TextBlock Text="Pilih Algoritma" Height="20"/>
                 <RadioButton Content="TSP" Height="20" x:Name="radio_TSP"/>
             </StackPanel>
-            <Border Grid.Row="4" Padding="3" CornerRadius="3" Background="LightGreen" Margin="110,0,110,0" Height="30">
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Width="120" Height="20" Text="Timespan: 100 ms" x:Name="text_time" Margin="50,0,0,0"/>
+                <Slider Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Minimum="100" Maximum="2000" Value="100" ValueChanged="Slider_ValueChanged" Margin="-20,0,0,0"/>
+            </Grid>
+            <Border Grid.Row="5" Padding="3" CornerRadius="3" Background="LightGreen" Margin="110,0,110,0" Height="30">
                 <Button Content="Search!" Background="LightGreen" Click="Button_Click_1" BorderBrush="LightGreen"/>
             </Border>
-            <Border Grid.Row="5" Padding="3" CornerRadius="3" Background="#FFA37DF9" Margin="110,10,110,28">
+            <Border Grid.Row="6" Padding="3" CornerRadius="3" Background="#FFA37DF9" Margin="110,10,110,28">
                 <Button Content="Visualize" Background="#FFA37DF9" Click="StartButton_Click" BorderBrush="#FFA37DF9" Margin="0,-3,0,0"/>
             </Border>
         </Grid>
@@ -68,7 +77,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Route: " x:Name="text_route"/>
+                <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Route: " x:Name="text_route"/>
+                </ScrollViewer>
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="Steps: " x:Name="text_steps"/>
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Nodes: " x:Name="text_nodes"/>
                 <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Excecution time: " x:Name="text_exc"/>

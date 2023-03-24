@@ -56,8 +56,21 @@ namespace Tubes2_Yasin
             {
                 bool isValid = true;
                 bool isKOne = true;
-
                 int countK = 0;
+
+
+                //reset state
+                state.TCounts = 0;
+                state.TFounds = 0;
+                state.rows = 0;
+                state.cols = 0;
+                state.idxTraverse = 0;
+                state.path = new List<Tuple<int, int>>();
+                state.traversalPath = new List<Tuple<int, int>>();
+                state.route = "";
+                state.nodes = 0;
+                state.currCheck = null;
+
                 // Get the selected file name
                 string fileName = openFileDialog.FileName;
 
@@ -68,6 +81,8 @@ namespace Tubes2_Yasin
                 string[] lines = fileContents.Split('\n');
                 int rows = lines.Length;
                 int cols = lines[0].Length-1;
+                state.rows = rows;
+                state.cols = cols;
                 char[,] matrix = new char[rows, cols];
 
                 for (i=0; i < rows; i++)
@@ -88,6 +103,11 @@ namespace Tubes2_Yasin
                         {
                             state.TCounts++;
                         }
+
+                        if (matrix[i,j] != 'X')
+                        {
+                            state.nodes++;
+                        }
                     }
                 }
 
@@ -98,7 +118,7 @@ namespace Tubes2_Yasin
 
                 if (isValid && isKOne)
                 {
-                    state.map = matrix;
+                    state.mapOri = matrix;
                     state.visited = new bool[rows, cols];
                     createMatrix();
                 }
@@ -136,8 +156,8 @@ namespace Tubes2_Yasin
 
         private void createMatrix()
         {
-            int rows = state.map.GetLength(0);
-            int cols = state.map.Length/rows;
+            int rows = state.rows;
+            int cols = state.cols;
 
             Grid grid = new Grid(); 
             
@@ -159,15 +179,15 @@ namespace Tubes2_Yasin
                 {
 
                     TextBlock textBlock = new TextBlock();
-                    if (state.map[i, j] == 'K')
+                    if (state.mapOri[i, j] == 'K')
                     {
                         textBlock.Text = "S";
                     }
-                    else if (state.map[i, j] == 'T')
+                    else if (state.mapOri[i, j] == 'T')
                     {
                         textBlock.Text = "T";
                     }
-                    else if (state.map[i, j] == 'X')
+                    else if (state.mapOri[i, j] == 'X')
                     {
                         textBlock.Background = Brushes.Black;
                     }
@@ -220,6 +240,27 @@ namespace Tubes2_Yasin
 
             Stopwatch stopwatch = new Stopwatch();
 
+            //reset
+            state.TFounds = 0;
+            state.idxTraverse = 0;
+            state.path = new List<Tuple<int, int>>();
+            state.traversalPath = new List<Tuple<int, int>>();
+            state.route = "";
+            state.currCheck = null;
+            state.current = null;
+            state.visited = null;
+            state.visitBefore = null;
+            state.parent = null;
+            state.anotherWay = false;
+            state.map = new char[state.rows, state.cols];
+            for(int i = 0; i < state.rows; i++)
+            {
+                for(int j = 0; j < state.cols; j++)
+                {
+                    state.map[i, j] = state.mapOri[i, j];
+                }
+            }
+
             stopwatch.Start();
             if (toggleTSP.IsChecked == true)
             {
@@ -247,14 +288,25 @@ namespace Tubes2_Yasin
             }
             stopwatch.Stop();
 
+            setRoute();
+
             TextBlock textExc = (TextBlock)FindName("text_exc");
-            textExc.Text += stopwatch.Elapsed.TotalMilliseconds.ToString() + " ms";
+            textExc.Text = "Execution time: " + stopwatch.Elapsed.TotalMilliseconds.ToString() + " ms";
+
+            TextBlock textNodes = (TextBlock)FindName("text_nodes");
+            textNodes.Text = "Nodes: " + state.nodes.ToString();
+
+            TextBlock textSteps = (TextBlock)FindName("text_steps");
+            textSteps.Text = "Steps: " + state.path.Count;
+
+            TextBlock mytext = (TextBlock)FindName("text_route");
+            mytext.Text = "Route: " + state.route;
 
         }
 
         public bool goCheck(int x, int y) 
         {
-            return x >= 0 && x < state.map.GetLength(0) && y >=0 && y < state.map.GetLength(1) && state.map[x,y] != 'X' && !state.visited[x,y];
+            return x >= 0 && x < state.rows && y >=0 && y < state.cols && state.map[x,y] != 'X' && !state.visited[x,y];
         }
 
         public bool DFS(int x, int y, char target) 
@@ -328,7 +380,7 @@ namespace Tubes2_Yasin
             queue.Enqueue(Tuple.Create(x, y));
 
             // make a matrix of tuple as parent of each points
-            state.parent = new Tuple<int, int>[state.map.GetLength(0), state.map.GetLength(1)];
+            state.parent = new Tuple<int, int>[state.rows, state.cols];
             state.parent[x, y] = Tuple.Create(-1, -1);
 
 
@@ -392,60 +444,56 @@ namespace Tubes2_Yasin
         public void solveDFS()
         {
             state.current = state.start;
-            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visitBefore = new bool[state.rows, state.cols];
             while (state.TFounds != state.TCounts)
             {
                 state.anotherWay = false;
-                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+                state.visited = new bool[state.rows, state.cols];
                 DFS(state.current.Item1, state.current.Item2, 'T');
             }
-            setRoute();
         }
 
         public void tspDFS()
         {
             state.current = state.start;
-            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visitBefore = new bool[state.rows, state.cols];
             while (state.TFounds != state.TCounts)
             {
                 state.anotherWay = false;
-                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+                state.visited = new bool[state.rows, state.cols];
                 DFS(state.current.Item1, state.current.Item2, 'T');
             }
             state.anotherWay = false;
-            state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visited = new bool[state.rows, state.cols];
             DFS(state.current.Item1, state.current.Item2, 'K');
-            setRoute();
         }
 
         public void solveBFS()
         {
             state.current = state.start;
-            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visitBefore = new bool[state.rows, state.cols];
             state.path.Add(state.start);
             state.visitBefore[state.start.Item1, state.start.Item2] = true;
             while (state.TFounds != state.TCounts)
             {
-                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+                state.visited = new bool[state.rows, state.cols];
                 BFS(state.current.Item1, state.current.Item2, 'T');
             }
-            setRoute();
         }
 
         public void tspBFS()
         {
             state.current = state.start;
-            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visitBefore = new bool[state.rows, state.cols];
             state.path.Add(state.start);
             state.visitBefore[state.start.Item1, state.start.Item2] = true;
             while (state.TFounds != state.TCounts)
             {
-                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+                state.visited = new bool[state.rows, state.cols];
                 BFS(state.current.Item1, state.current.Item2, 'T');
             }
-            state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.visited = new bool[state.rows, state.cols];
             BFS(state.current.Item1, state.current.Item2, 'K');
-            setRoute();
         }
 
         public void setRoute()
@@ -480,9 +528,6 @@ namespace Tubes2_Yasin
                 temp = item;
             }
             state.route = route;
-
-            TextBlock mytext = (TextBlock)FindName("text_route");
-            mytext.Text += " " + route;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -497,7 +542,7 @@ namespace Tubes2_Yasin
 
             // Create the timer but don't start it yet
             _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Interval = TimeSpan.FromMilliseconds(state.timespan);
             _timer.Tick += visualize;
             _timer.Start();
         }
@@ -514,7 +559,15 @@ namespace Tubes2_Yasin
             else
             {
                 _timer.Stop();
+                state.idxTraverse = 0;
             }
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            state.timespan = (int)e.NewValue;
+            TextBlock textTime = (TextBlock)FindName("text_time");
+            textTime.Text = "timespan " + state.timespan + " ms";
         }
 
     }

@@ -10,8 +10,8 @@ namespace Tubes2_Yasin
     public class State
     {
         public Tuple<int, int> start = null, current = null, currCheck = null;
-        public int TCounts = 0, TFounds = 0, idxTraverse = 0;
-        public char[,] map = null;
+        public int TCounts = 0, TFounds = 0, idxTraverse = 0, timespan = 100, nodes = 0,cols = 0, rows = 0;
+        public char[,] map = null, mapOri = null;
         public bool[,] visited = null, visitBefore = null;
         public Tuple<int, int> [,] parent = null;
         public List<Tuple<int, int>> path = new List<Tuple<int, int>>(), traversalPath = new List<Tuple<int, int>>();
