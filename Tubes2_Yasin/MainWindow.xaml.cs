@@ -75,21 +75,20 @@ namespace Tubes2_Yasin
                 string fileName = openFileDialog.FileName;
 
                 // Read the contents of the file
-                string fileContents = File.ReadAllText(fileName);
+                string[] lines = File.ReadAllLines(fileName);
 
                 int i = 0;
-                string[] lines = fileContents.Split('\n');
                 int rows = lines.Length;
-                int cols = lines[0].Length-1;
+                int cols = lines[1].Length / 2 + 1;
                 state.rows = rows;
                 state.cols = cols;
                 char[,] matrix = new char[rows, cols];
 
-                for (i=0; i < rows; i++)
+                for (i = 0; i < rows; i++)
                 {
-                    for(int j=0;j<cols; j++)
+                    for (int j = 0; j < cols; j++)
                     {
-                        matrix[i,j] = lines[i][j];
+                        matrix[i, j] = lines[i][(j) * 2];
                         if (matrix[i,j] != 'T' && matrix[i, j] != 'R' && matrix[i, j] != 'K' && matrix[i, j] != 'X')
                         {
                             isValid = false;
