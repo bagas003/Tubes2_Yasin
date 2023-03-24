@@ -286,12 +286,17 @@ namespace Tubes2_Yasin
 
             // recursive
             var possibleDir = new List<Tuple<int, int>>();
+            int cnt = 0;
             for (int i = 0; i < 4; i++) 
             {
                 int x2 = x + state.dx[i];
                 int y2 = y + state.dy[i];
                 if (goCheck(x2, y2)) 
                 {
+                    if (!state.visitBefore[x2, y2])
+                    {
+                        cnt++;
+                    }
                     state.anotherWay = state.anotherWay || !state.visitBefore[x2, y2];
                     possibleDir.Add(Tuple.Create(x2, y2));
                 }
@@ -301,7 +306,7 @@ namespace Tubes2_Yasin
             {
                 int x2 = dir.Item1, y2 = dir.Item2;
                 if ((!state.anotherWay && state.visitBefore[x2, y2]) 
-                    || !state.visitBefore[x2, y2])
+                    || !state.visitBefore[x2, y2] || cnt == 0)
                 {
                     if (DFS(x2, y2, target))
                     {
@@ -407,6 +412,7 @@ namespace Tubes2_Yasin
                 state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
                 DFS(state.current.Item1, state.current.Item2, 'T');
             }
+            state.anotherWay = false;
             state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
             DFS(state.current.Item1, state.current.Item2, 'K');
             setRoute();
