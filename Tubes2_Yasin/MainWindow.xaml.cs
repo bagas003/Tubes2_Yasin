@@ -417,10 +417,10 @@ namespace Tubes2_Yasin
             state.current = state.start;
             state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
             state.path.Add(state.start);
-            state.visitBefore[start.Item1, start.Item2] = true;
+            state.visitBefore[state.start.Item1, state.start.Item2] = true;
             while (state.TFounds != state.TCounts)
             {
-                state.visited = new bool[map.GetLength(0), map.GetLength(1)];
+                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
                 BFS(state.current.Item1, state.current.Item2, 'T');
             }
             setRoute();
@@ -431,13 +431,13 @@ namespace Tubes2_Yasin
             state.current = state.start;
             state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
             state.path.Add(state.start);
-            state.visitBefore[start.Item1, start.Item2] = true;
+            state.visitBefore[state.start.Item1, state.start.Item2] = true;
             while (state.TFounds != state.TCounts)
             {
-                state.visited = new bool[map.GetLength(0), map.GetLength(1)];
+                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
                 BFS(state.current.Item1, state.current.Item2, 'T');
             }
-            state.visited = new bool[map.GetLength(0), map.GetLength(1)];
+            state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
             BFS(state.current.Item1, state.current.Item2, 'K');
             setRoute();
         }
