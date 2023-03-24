@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Tubes2_Yasin/1.0.0": {
+        "runtime": {
+          "Tubes2_Yasin.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Tubes2_Yasin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

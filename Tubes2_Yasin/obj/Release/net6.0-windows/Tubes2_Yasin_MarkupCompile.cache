@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-D:\Kuliah\stima\Tubes2_Yasin\Tubes2_Yasin\obj\Debug\net6.0-windows\
+D:\Kuliah\stima\Tubes2_Yasin\Tubes2_Yasin\obj\Release\net6.0-windows\
 Tubes2_Yasin
 none
 false
-TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+TRACE;RELEASE;NET;NET6_0;NETCOREAPP
 D:\Kuliah\stima\Tubes2_Yasin\Tubes2_Yasin\App.xaml
 11407045341
 

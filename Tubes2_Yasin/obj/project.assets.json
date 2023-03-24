@@ -8,24 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mmuuh\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Bagas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
+      "projectUniqueName": "D:\\Kuliah\\stima\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
       "projectName": "Tubes2_Yasin",
-      "projectPath": "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
-      "packagesPath": "C:\\Users\\mmuuh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mmuuh\\Documents\\Tubes2_Yasin\\Tubes2_Yasin\\obj\\",
+      "projectPath": "D:\\Kuliah\\stima\\Tubes2_Yasin\\Tubes2_Yasin\\Tubes2_Yasin.csproj",
+      "packagesPath": "C:\\Users\\Bagas\\.nuget\\packages\\",
+      "outputPath": "D:\\Kuliah\\stima\\Tubes2_Yasin\\Tubes2_Yasin\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\mmuuh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Bagas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

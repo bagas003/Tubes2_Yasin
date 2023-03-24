@@ -1,0 +1,5 @@
+D:\Kuliah\stima\Tubes2_Yasin\bin\Tubes2_Yasin.exe
+D:\Kuliah\stima\Tubes2_Yasin\bin\Tubes2_Yasin.dll
+D:\Kuliah\stima\Tubes2_Yasin\bin\Tubes2_Yasin.deps.json
+D:\Kuliah\stima\Tubes2_Yasin\bin\Tubes2_Yasin.runtimeconfig.json
+D:\Kuliah\stima\Tubes2_Yasin\bin\Tubes2_Yasin.pdb
