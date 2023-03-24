@@ -257,7 +257,7 @@ namespace Tubes2_Yasin
             return x >= 0 && x < state.map.GetLength(0) && y >=0 && y < state.map.GetLength(1) && state.map[x,y] != 'X' && !state.visited[x,y];
         }
 
-        public bool DFS(int x, int y) 
+        public bool DFS(int x, int y, char target) 
         {
             // mark as visited
             state.visited[x, y] = true;
@@ -272,7 +272,7 @@ namespace Tubes2_Yasin
             }
 
             // collect T if (x,y) is a treasure
-            if (state.map[x, y] == 'T')
+            if (state.map[x, y] == target)
             {
                 // change T value to R, inc TFounds, change current position
                 state.map[x, y] = 'R';
@@ -303,7 +303,7 @@ namespace Tubes2_Yasin
                 if ((!state.anotherWay && state.visitBefore[x2, y2]) 
                     || !state.visitBefore[x2, y2])
                 {
-                    if (DFS(x2, y2))
+                    if (DFS(x2, y2, target))
                     {
                         return true;
                     }
@@ -316,7 +316,7 @@ namespace Tubes2_Yasin
             return false;
         }
     
-        public void BFS(int x, int y)
+        public void BFS(int x, int y, char target)
         {
             // make BFS queue then enque (x,y)
             Queue<Tuple<int, int>> queue = new Queue<Tuple<int, int>>();
@@ -335,7 +335,7 @@ namespace Tubes2_Yasin
             
                 state.traversalPath.Add(temp);
                 // Treasure encountered
-                if (state.map[temp.Item1, temp.Item2] == 'T') {
+                if (state.map[temp.Item1, temp.Item2] == target) {
                     // inc Counter, change current position, change map value to R
                     state.TFounds++;
                     state.current = Tuple.Create(temp.Item1, temp.Item2);
@@ -392,8 +392,23 @@ namespace Tubes2_Yasin
             {
                 state.anotherWay = false;
                 state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
-                DFS(state.current.Item1, state.current.Item2);
+                DFS(state.current.Item1, state.current.Item2, 'T');
             }
+            setRoute();
+        }
+
+        public void tspDFS()
+        {
+            state.current = state.start;
+            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            while (state.TFounds != state.TCounts)
+            {
+                state.anotherWay = false;
+                state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+                DFS(state.current.Item1, state.current.Item2, 'T');
+            }
+            state.visited = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            DFS(state.current.Item1, state.current.Item2, 'K');
             setRoute();
         }
 
@@ -406,8 +421,24 @@ namespace Tubes2_Yasin
             while (state.TFounds != state.TCounts)
             {
                 state.visited = new bool[map.GetLength(0), map.GetLength(1)];
-                BFS(state.current.Item1, state.current.Item2);
+                BFS(state.current.Item1, state.current.Item2, 'T');
             }
+            setRoute();
+        }
+
+        public void tspBFS()
+        {
+            state.current = state.start;
+            state.visitBefore = new bool[state.map.GetLength(0), state.map.GetLength(1)];
+            state.path.Add(state.start);
+            state.visitBefore[start.Item1, start.Item2] = true;
+            while (state.TFounds != state.TCounts)
+            {
+                state.visited = new bool[map.GetLength(0), map.GetLength(1)];
+                BFS(state.current.Item1, state.current.Item2, 'T');
+            }
+            state.visited = new bool[map.GetLength(0), map.GetLength(1)];
+            BFS(state.current.Item1, state.current.Item2, 'K');
             setRoute();
         }
 
