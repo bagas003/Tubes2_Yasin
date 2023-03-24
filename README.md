@@ -12,11 +12,24 @@ Aplikasi sederhana implementasi algoritma Depth First Search (DFS) dan Breadth F
 Prioritas arah simpul yang dibangkitkan oleh algoritma DFS dan BFS adalah `L - D - R - U`
 
 ## Requirement
+- C#
+```
+https://www.microsoft.com/en-us/download/details.aspx?id=7029
+```
+- .NET Framework 4.7.2
+```
+https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472
+```
+- Visual Studio 2022
+```
+https://visualstudio.microsoft.com/
+```
 
 ## Cara Penggunaan
-
+- Clone repository atau download sebagai file ZIP lalu ekstrak
+- Jalankan file executable `bin/Tubes2_yasin.exe`
 
 Oleh Kelompok Yasin:
-- 13521041 - Muhammad Hanan
-- 13521065 - Mutawally Nawwar
-- 13521081 - Bagas Aryo Seto
+1. 13521041 - Muhammad Hanan
+2. 13521065 - Mutawally Nawwar
+3. 13521081 - Bagas Aryo Seto
