@@ -214,7 +214,7 @@ namespace Tubes2_Yasin
 
         private void search()
         {
-            ToggleButton toggleTSP = (ToggleButton)FindName("toggle_TSP");
+            RadioButton toggleTSP = (RadioButton)FindName("radio_TSP");
             RadioButton radioBFS = (RadioButton)FindName("radio_BFS");
             RadioButton radioDFS = (RadioButton)FindName("radio_DFS");
 

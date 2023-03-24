@@ -21,12 +21,12 @@
                 <RowDefinition Height="29*"/>
                 <RowDefinition Height="51*"/>
                 <RowDefinition Height="79*"/>
-                <RowDefinition Height="79*"/>
-                <RowDefinition Height="57*"/>
-                <RowDefinition Height="51.097"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="64*"/>
+                <RowDefinition Height="68.003"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Input" Width="145" Height="25" HorizontalAlignment="Left" Margin="60,0,0,0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center"/>
-            <Border Grid.Row="1" Width="100" Height="30" CornerRadius="10" Padding="3" Background="LightBlue">
+            <Border Grid.Row="1" CornerRadius="10" Padding="3" Background="LightBlue" Margin="110,10,110,11">
                 <Button Content="Choose File" Click="Button_Click" BorderBrush="LightBlue" Foreground="White" Background="LightBlue" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
             </Border>
             <StackPanel Grid.Row="2" Margin="60,10,100,0" Grid.RowSpan="2" Height="70" VerticalAlignment="Top">
@@ -34,14 +34,16 @@
                 <RadioButton Content="BFS" Height="20" x:Name="radio_BFS"/>
                 <RadioButton Content="DFS" Height="20" x:Name="radio_DFS"/>
             </StackPanel>
-            <StackPanel Grid.Row="3" Margin="60,0,100,0" VerticalAlignment="Top" Height="70">
+            <StackPanel Grid.Row="3" Margin="60,0,100,0" VerticalAlignment="Center" Height="52">
                 <TextBlock Text="Pilih Algoritma" Height="20"/>
-                <ToggleButton Content="TSP" IsChecked="false" x:Name="toggle_TSP" Margin="40,7,0,0" Height="30"/>
+                <RadioButton Content="TSP" Height="20" x:Name="radio_TSP"/>
             </StackPanel>
-            <Border Grid.Row="4" Width="100" Height="30" Padding="3" CornerRadius="3" Background="LightGreen">
+            <Border Grid.Row="4" Padding="3" CornerRadius="3" Background="LightGreen" Margin="110,0,110,0" Height="30">
                 <Button Content="Search!" Background="LightGreen" Click="Button_Click_1" BorderBrush="LightGreen"/>
             </Border>
-            <Button Grid.Row="5" Content="Visualize" Margin="100,0,100,0" VerticalAlignment="Top" Height="30" Width="120" Background="#FFA37DF9" Click="StartButton_Click"/>
+            <Border Grid.Row="5" Padding="3" CornerRadius="3" Background="#FFA37DF9" Margin="110,10,110,28">
+                <Button Content="Visualize" Background="#FFA37DF9" Click="StartButton_Click" BorderBrush="#FFA37DF9" Margin="0,-3,0,0"/>
+            </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -52,8 +54,8 @@
             <TextBlock Grid.Row="0" Text="Output" FontWeight="Bold" FontFamily="Arial" FontSize="13" Height="25" VerticalAlignment="Top"/>
             <Grid x:Name="myMap" Grid.Row="1" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="8*"/>
-                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="431*"/>
+                    <ColumnDefinition Width="49*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
             <Grid Grid.Row="2">
